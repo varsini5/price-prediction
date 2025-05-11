@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Shipping Price Prediction{% endblock %}
+
+{% block content %}
+<div class="wide-border" style="max-width: 100%; margin: auto; padding: 100px 80px; text-align: center;">
+
+    <h1 style="margin-bottom: 40px;">Welcome to <span style="color:rgb(10, 10, 10);">Shipping Price Prediction System</span></h1>
+
+    <div style="background-color:rgb(213, 236, 236); padding: 40px; border-radius: 20px; margin-bottom: 60px;">
+        <h2>Project By:</h2>
+        <p><strong>Your Name:</strong> <span style="color:rgb(13, 113, 121);">Varsini Praba S</span></p>
+        <p><strong>Guide Name:</strong> <span style="color:rgb(21, 154, 172);">Dr. K. Muthuramalingam</span></p>
+        <p>Assistant Professor in Computer Science</p>
+    </div>
+
+    <div style="background-color:rgb(113, 149, 187); padding: 20px; border-radius: 20px; margin-bottom: 60px;">
+        <h2>Project Overview</h2>
+        <p style="font-size: 18px; line-height: 1.6;">
+            This project is designed to predict <strong>shipment prices</strong> using advanced <strong>Machine Learning models</strong>.
+            It helps businesses and logistics companies make informed decisions about freight pricing.
+        </p>
+    </div>
+
+    <div style="background-color:rgb(141, 179, 216); padding: 60px; border-radius: 30px; margin-bottom: 60px;">
+        <h2>How It Works</h2>
+        <ul style="text-align: left; max-width: 60%; margin: auto; font-size: 18px;">
+            <li><strong>Register/Login:</strong> Access the platform securely.</li>
+            <li><strong>Upload CSV:</strong> Upload your shipping dataset.</li>
+            <li><strong>Get Predictions:</strong> View AI-driven shipping cost forecasts.</li>
+            <li><strong>Visualize Data:</strong> Analyze trends with graphical representations.</li>
+        </ul>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="flash {{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div style="margin-top: 50px;">
+        {% if session.get('user_id') %}
+            <p style="font-size: 18px;">Welcome, <strong>{{ session.get('username') }}</strong>!</p>
+            <a href="{{ url_for('upload') }}" class="btn btn-primary" style="padding: 10px 20px; font-size: 18px;">Go to Upload Page</a>
+        {% else %}
+            <p style="font-size: 18px;">Please <a href="{{ url_for('login') }}" style="color: #007bff;">log in</a> to access the features.</p>
+            <p style="font-size: 18px;">New user? <a href="{{ url_for('register') }}" style="color: #007bff;">Register Here</a></p>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

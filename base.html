@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Shipping Price Prediction{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+ 
+    
+</head>
+<body>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+
+            {% if session.get('user_id') %}  {# ✅ More reliable session check #}
+                <li><a href="{{ url_for('upload') }}">Upload</a></li>
+                <li><a href="{{ url_for('predict') }}">Predict</a></li>  
+                <li><a href="{{ url_for('graphs') }}">View Graphs</a></li>
+                <li><a href="{{ url_for('conclusion') }}">Conclusion</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Shipping Price Prediction</p>
+    </footer>
+</body>
+</html>

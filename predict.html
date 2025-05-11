@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Prediction Results{% endblock %}
+
+{% block content %}
+    <h2>Prediction Results</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results - Shipping Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="wide-border">
+    
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="flash {{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="table-container">
+            {{ tables | safe }}
+        </div>
+
+        <!-- Redirect to Graph Page -->
+        <a href="{{ url_for('graphs') }}">View Graphs</a>
+        <a href="{{ url_for('logout') }}" class="button">Logout</a>
+    </div>
+</body>
+</html>
+{% endblock %}

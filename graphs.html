@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Graph Analysis{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Visualization</title>
+</head>
+<body>
+    <h1>Prediction Graph</h1>
+
+    {% if graph_path %}
+        <img src="{{ url_for('static', filename='graph.png') }}" alt="Prediction Graph">
+    {% else %}
+        <p>No graph available. Please make a prediction first.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('index') }}">Go Back to Home</a>
+    <a href="{{ url_for('conclusion') }}">conclusion</a>
+</body>
+</html>
+
+
+ 
+{% endblock %}

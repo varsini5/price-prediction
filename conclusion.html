@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Conclusion{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conclusion</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Conclusion</h1> & Insights</h2>
+
+        <p>The machine learning models used in this project provide price predictions based on historical shipping data.</p>
+        <ul>
+            <li><strong>Random Forest:</strong> Handles complex patterns and provides stable results.</li>
+            <li><strong>Gradient Boosting:</strong> Captures non-linear relationships effectively.</li>
+            <li><strong>SVR:</strong> Works well with smaller datasets and smooth predictions.</li>
+        </ul>
+
+        <p>Overall, these models can help in estimating shipping costs, improving logistics planning, and optimizing operational efficiency.</p>
+
+        <a href="{{ url_for('upload') }}" class="button">Upload Another File</a>
+        <a href="{{ url_for('logout') }}" class="button">Logout</a>
+        <a href="{{ url_for('index') }}">Go to Home</a>
+    </div>
+
+</body>
+</html>
+{% endblock %}
